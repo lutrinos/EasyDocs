@@ -1,0 +1,5 @@
+.content {
+  line-height: 1.6rem;
+  text-align: justify;
+  color: var(--color-primary);
+}

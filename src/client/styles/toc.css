@@ -1,0 +1,16 @@
+.toc {
+  background: red;
+
+  /* Flex direction - column */
+  display: flex;
+  flex-direction: column;
+
+  /* Takes as space as needed horizontally + all vertically */
+  flex: 1 1 0%;
+  position: sticky;
+  top: 70px;
+  height: calc(100vh - 70px);
+
+  /* Max width */
+  max-width: var(--layout-sidebar-max);
+}

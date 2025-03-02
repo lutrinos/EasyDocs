@@ -1,0 +1,72 @@
+.sidebar {
+  /* Flex direction - column */
+  display: flex;
+  flex-direction: column;
+
+  /* Takes as space as needed horizontally + all vertically */
+  flex: 1 1 0%;
+  position: sticky;
+  top: 70px;
+  height: calc(100vh - 70px);
+
+  /* Max width */
+  max-width: var(--layout-sidebar-max);
+  padding: var(--padding-default);
+}
+
+/* Style for a link */
+.sidelink {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-two);
+  padding: var(--padding-default);
+  padding-left: var(--padding-large);
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: var(--radius);
+  height: 26px;
+}
+.sidelink:hover {
+  background: var(--gray-highest);
+}
+.sidelink span {
+  transition: ease var(--duration);
+  border-radius: var(--radius);
+}
+.sidelink span.open {
+  transform: rotate(90deg);
+}
+.sidelink span:hover {
+  background: rgba(0, 0, 0, .05);
+}
+
+/* Style for the accordion */
+/* Style for the accordion children wrapper */
+.sidewrapper {
+  position: relative;
+  margin-left: 16px;
+  padding-left: 6px;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--duration) ease;
+}
+
+.sidewrapper::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  height: calc(100% - 16px);
+  border-left: solid 1px var(--gray-higher);
+}
+
+.sidewrapper.open {
+  grid-template-rows: 1fr;
+}
+
+/* Accordion inner element */
+.sideinner {
+  overflow: hidden;
+}

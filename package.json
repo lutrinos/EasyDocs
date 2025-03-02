@@ -1,0 +1,31 @@
+{
+  "scripts": {
+    "old-dev": "tsc && tsc-alias && node ./node-dist/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.16.1",
+    "tsc-alias": "^1.8.10",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@elysiajs/node": "^1.2.5",
+    "@markdoc/markdoc": "^0.5.1",
+    "@preact/compat": "^17.1.2",
+    "@types/mime-types": "^2.1.4",
+    "browserslist": "^4.23.3",
+    "chokidar": "^3.6.0",
+    "elysia": "^1.2.14",
+    "esbuild": "^0.20.2",
+    "fdir": "^6.4.3",
+    "lightningcss": "^1.26.0",
+    "mime-types": "^2.1.35",
+    "picocolors": "^1.0.1",
+    "preact": "^10.23.2",
+    "preact-render-to-string": "^6.5.9",
+    "wouter-preact": "^3.3.3",
+    "yaml": "^2.5.0",
+    "zod": "^3.23.8"
+  }
+}

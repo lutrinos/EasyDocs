@@ -1,0 +1,105 @@
+header,
+header .inner,
+header nav,
+header .navbar,
+header .brand,
+header .infos,
+header .search,
+header .input,
+header .external-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+/* Layout */
+header {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  z-index: var(--index-higher);
+  height: 70px;
+  background: var(--background);
+  justify-content: center;
+  border-bottom: solid var(--border-width) var(--gray-highest);
+}
+
+header .inner {
+  justify-content: space-between;
+  padding: var(--padding-default) var(--padding-medium);
+  width: 100%;
+  max-width: var(--layout-page-max);
+}
+
+header .navbar {
+  gap: 4px;
+}
+
+/* Banners */
+header .banners {
+
+}
+
+.banner {
+  padding: var(--padding-default) var(--padding-medium);
+}
+
+/* Branding */
+header .brand {
+  gap: 12px;
+  width: var(--layout-sidebar-max);
+}
+
+header .brand img {
+  border-radius: var(--radius);
+}
+
+header .brand h1 {
+  font-weight: var(--weight-semibold);
+  font-size: var(--size-title);
+}
+
+/* Links */
+header nav {
+  gap: 24px;
+  width: 0;
+  flex: 1 1 0%;
+  max-width: var(--layout-content-max);
+}
+header a {
+  font-weight: var(--weight-medium);
+  font-size: var(--size-default);
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+header a:hover {
+  color: var(--primary-dimmest);
+}
+
+/* Infos */
+header .infos {
+  gap: 12px;
+}
+header .external-links a {
+  display: inline-block;
+}
+
+/* Search component */
+.search {
+
+}
+.search .input {
+  background: var(--gray-highest);
+  padding: var(--padding-default) var(--padding-medium);
+  gap: 8px;
+  border-radius: var(--radius);
+}
+.search .input span {
+  font-size: var(--size-default);
+}
+.search input {
+  outline: none;
+  border: none;
+  background: transparent;
+}

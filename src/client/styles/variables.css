@@ -1,0 +1,78 @@
+
+:root {
+  --bg: white;
+  --bg-hover: #f8fafc;
+  --bg-active: #eff6ff;
+
+  --color: #020617;
+  --color-two: #475569;
+  --color-three: #64748b;
+
+  --radius: 4px;
+
+  --accent: #ddd;
+
+  --fg-default: 27, 121, 228;
+  --fg-dimmer: 0, 153, 255;
+
+  --blue: #3b82f6;
+
+  /* Durations */
+  --duration: 0.2s;
+
+  /* z-indexes */
+  --index-default: 10;
+  --index-higher: 20;
+  --index-highest: 30;
+
+  /* Font weights */
+  --weight-default: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 800;
+  --weight-extrabold: 900;
+
+  /* Font sizes */
+  --size-secondary: 13px;
+  --size-default: 16px;
+  --size-subtitle: 18px;
+  --size-title: 20px;
+
+  /* Border sizes */
+  --border-width: 1px;
+
+  /* Paddings */
+  --padding-sm: 4px;
+  --padding-default: 8px;
+  --padding-medium: 12px;
+  --padding-large: 16px;
+  --padding-xl: 24px;
+
+  /* Layout sizes */
+  --layout-page-max: 1510px;
+  --layout-content-max: 800px;
+  --layout-sidebar-max: 300px;
+
+  /* Colors */
+  --primary-dimmest: #3479E9;
+  --primary-dimmer: #61A6FA;
+  --primary-default: #91C3FD;
+  --primary-higher: #BEDBFE;
+  --primary-highest: #DCEBFE;
+
+  /* Grays */
+  --gray-dimmest: #71717A;
+  --gray-dimmer: #A1A1AA;
+  --gray-default: #D4D4D8;
+  --gray-higher: #E4E4E7;
+  --gray-highest: #f8fafc;
+
+  /*--color-primary: #1A1A1A;
+  --color-secondary: #52525B;
+  --color-tertiary: #ACACAC;*/
+  --color-primary: #000000 87%;
+  --color-secondary: #6b7280;
+  --color-tertiary: #000000 37%;
+
+  --background: #FFFFFF;
+}

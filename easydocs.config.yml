@@ -1,0 +1,81 @@
+title: Hello world!
+url: http://localhost:3000
+baseUrl: /
+favicon: /icon.svg
+tagline: Lorem ipsum dolor sit amet
+repository: https://www.github.com/ntillier/EasyDocs
+
+edit:
+  enabled: true
+  src: https://www.github.com/ntillier/EasyDocs/docs
+  title: Edit me !
+
+breadcrumb:
+  enabled: true
+  root: Accueil
+
+clientScripts:
+  hello.js
+
+titleDelimiter: ~
+
+i18n:
+  default: en
+  languages:
+    - title: Français
+      slug: fr
+    - title: English
+      slug: en
+
+versions:
+  - title: Current version
+    description: Lorem ipsum
+    status: current
+    slug: now
+  - title: Beta version
+    description: Lorem ipsum
+    status: beta
+    slug: beta
+  - title: Alpha version
+    description: Lorem ipsum
+    status: alpha
+    slug: alpha
+  - title: Archived version
+    description: Lorem ipsum
+    status: archived
+    slug: 
+
+navbar:
+  title: EasyTest
+  icon:
+    alt: lol
+    src: icon.svg
+    width: 50
+    height: 50
+  links:
+    - title: GitHub
+      url: https://www.github.com/ntillier/EasyDocs
+    - title: Moi
+      url: https://www.github.com/ntillier
+
+footer:
+  copyright: 2024 :)
+
+search:
+  placeholder: Search smth
+  maxResults: 10
+  noResults: O.o
+
+snippets:
+  lineNumbers: false
+
+toc:
+  max: 2
+  title: Table of Content
+
+banners:
+  - id: info-1
+    title: Some info
+    background: #000000
+    color: #ffffff
+    visibility: persistent
