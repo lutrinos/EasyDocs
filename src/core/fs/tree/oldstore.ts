@@ -1,5 +1,5 @@
 import { mkdirSync, writeFileSync, readFileSync, statSync, existsSync } from 'fs';
-import { join, dirname } from 'path';
+import { join, dirname, parse } from 'path';
 
 interface PageData {
     html: string;
@@ -10,8 +10,8 @@ interface PageData {
 export class FileStore {
     private cacheDir: string;
 
-    constructor(baseDir: string = process.cwd()) {
-        this.cacheDir = join(baseDir, '.easydocs');
+    constructor(cacheDir: string) {
+        this.cacheDir = cacheDir
         mkdirSync(this.cacheDir, { recursive: true });
     }
 
@@ -20,10 +20,10 @@ export class FileStore {
      */
     write(url: string, html: string, json: string): void {
         const normalizedUrl = url === '/' ? '/index' : url;
-        const pageDir = join(this.cacheDir, normalizedUrl);
         
-        // Create directory if it doesn't exist
-        mkdirSync(pageDir, { recursive: true });
+        // Create directories if it doesn't exist
+        mkdirSync(join(this.cacheDir, normalizedUrl), { recursive: true });
+        mkdirSync(join(this.cacheDir, '_', parse(normalizedUrl).dir), { recursive: true });
 
         const data: PageData = {
             html,
@@ -32,10 +32,10 @@ export class FileStore {
         };
 
         // Write the HTML file
-        writeFileSync(join(pageDir, 'page.html'), html);
+        writeFileSync(join(this.cacheDir, normalizedUrl, 'index.html'), html);
         
         // Write the metadata and JSON content
-        writeFileSync(join(pageDir, 'page.json'), JSON.stringify(data));
+        writeFileSync(join(this.cacheDir, '_', `${normalizedUrl}.json`), JSON.stringify(data));
     }
 
     /**
@@ -46,7 +46,7 @@ export class FileStore {
         try {
             const normalizedUrl = url === '/' ? '/index' : url;
             const pageDir = join(this.cacheDir, normalizedUrl);
-            const jsonPath = join(pageDir, 'page.json');
+            const jsonPath = join(pageDir, 'index.json');
 
             // Check if cached files exist
             if (!existsSync(jsonPath)) {
@@ -63,7 +63,7 @@ export class FileStore {
             }
 
             // Read the HTML file
-            data.html = readFileSync(join(pageDir, 'page.html'), 'utf-8');
+            data.html = readFileSync(join(pageDir, 'index.html'), 'utf-8');
             
             return data;
         } catch (error) {

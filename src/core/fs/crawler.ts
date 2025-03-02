@@ -3,7 +3,6 @@ import { basename } from 'path';
 
 export const crawl = async (path: string, extensions: string[]): Promise<GroupOutput> => {
     return new Promise((resolve, reject) => {
-        const glob = `./**/*.{${extensions.join(',')}}`;
 
         new fdir()
             .withBasePath()
@@ -13,7 +12,7 @@ export const crawl = async (path: string, extensions: string[]): Promise<GroupOu
             .withPathSeparator('/')
             .withErrors()
             .group()
-            .glob(glob)
+            .glob(`./**/*.{${extensions.join(',')}}`)
             .crawl(path)
             .withCallback((err, groups) => {
                 if (err) {
@@ -22,7 +21,7 @@ export const crawl = async (path: string, extensions: string[]): Promise<GroupOu
 
                 resolve(
                     groups
-                    .sort((a, b) => b.directory.length - a.directory.length)
+                    .sort((a, b) => a.directory.length - b.directory.length)
                     .map(group => ({
                         directory: group.directory,
                         dir: group.directory,

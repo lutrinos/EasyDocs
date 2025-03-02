@@ -28,7 +28,7 @@ export const buildCSS = async (dirname: string) => {
     }
   });
 
-  writeFileSync(join(process.cwd(), '.easydocs', 'index.css'), code);
+  writeFileSync(join(process.cwd(), '.easydocs', '_', 'index.css'), code);
 
 
   log('success', 'Built css');
@@ -39,7 +39,7 @@ export const buildJs = async (dirname: string) => {
 
   await esbuild.build({
     entryPoints: [join(dirname, 'client', 'App.tsx')],
-    outfile: join(process.cwd(), '.easydocs', 'index.js'),
+    outfile: join(process.cwd(), '.easydocs', '_', 'index.js'),
     minify: true,
     bundle: true,
     platform: 'browser',
@@ -50,10 +50,4 @@ export const buildJs = async (dirname: string) => {
 
 
   log('success', 'Built js');
-}
-
-export const buildHTML = (dirname: string) => {
-  const html = readFileSync(join(dirname, 'client', 'index.html'));
-
-  writeFileSync(join(process.cwd(), '.easydocs', 'index.html'), html);
 }

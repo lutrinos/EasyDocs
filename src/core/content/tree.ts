@@ -142,6 +142,27 @@ export default class Tree {
     }
 
     /**
+     * Removes a node at the specified path
+     * @returns true if node was found and removed, false otherwise
+     */
+    remove(path: string[]): boolean {
+        if (path.length === 0) {
+            return false; // Cannot remove root node
+        }
+
+        const parentPath = path.slice(0, -1);
+        const lastSegment = path[path.length - 1];
+        
+        const parent = this.find(parentPath);
+        
+        if (!parent || parent.type !== 'group') {
+            return false;
+        }
+
+        return parent.children.delete(lastSegment);
+    }
+
+    /**
      * Converts the tree to a JSON-serializable format
      */
     toJSON(): GroupNodeJSON {
