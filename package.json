@@ -16,6 +16,7 @@
     "@types/mime-types": "^2.1.4",
     "browserslist": "^4.23.3",
     "chokidar": "^3.6.0",
+    "copy-to-clipboard": "^3.3.3",
     "elysia": "^1.2.14",
     "esbuild": "^0.20.2",
     "fdir": "^6.4.3",

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "preact/hooks"
-import markdoc from "../components/Markdown";
 
 import preact from "preact/compat";
 import { useLocation } from "wouter-preact";
+import markdoc, {Fence, Tab, Tabs } from "../components/Markdown";
 
 const Content = () => {
   const [url, _] = useLocation();
@@ -19,7 +19,13 @@ const Content = () => {
 
   if (json) {
     return (
-      <div style={{ flex: 1, padding: 20 }} class="content">{ markdoc(json, preact) }</div>
+      <div style={{ flex: 1, padding: 20 }} class="content">{ markdoc(json, preact, {
+        components: {
+          Tabs,
+          Tab,
+          Fence
+        },
+      }) }</div>
     );
   }
 

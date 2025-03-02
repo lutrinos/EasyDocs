@@ -4,6 +4,8 @@ import { readFileSync } from 'fs';
 import yaml from 'yaml';
 
 import headingMarkdoc from './markdoc/heading.markdoc';
+import fenceMarkdoc from './markdoc/fence.markdoc';
+import { tabs, tab } from './markdoc/tabs.markdoc';
 
 export function parseMarkdownFile(path: string) {
     const content = readFileSync(path, 'utf-8');
@@ -15,9 +17,13 @@ export const transform = (content: string, path: string) => {
     const ast = Markdoc.parse(content);
     const front = ast.attributes.frontmatter ? yaml.parse(ast.attributes.frontmatter) : {};
     const transformed = Markdoc.transform(ast, {
-        tags: {},
+        tags: {
+            tabs,
+            tab
+        },
         nodes: {
-            heading: headingMarkdoc
+            heading: headingMarkdoc,
+            fence: fenceMarkdoc
         },
         variables: {
             ...front

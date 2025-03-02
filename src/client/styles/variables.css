@@ -12,10 +12,8 @@
 
   --accent: #ddd;
 
-  --fg-default: 27, 121, 228;
-  --fg-dimmer: 0, 153, 255;
-
-  --blue: #3b82f6;
+  --fg-default: rgb(27, 121, 228);
+  --fg-dimmer: rgb(0, 153, 255);
 
   /* Durations */
   --duration: 0.2s;
