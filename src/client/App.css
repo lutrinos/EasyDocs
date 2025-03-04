@@ -8,5 +8,6 @@
 @import "styles/content.css";
 @import "styles/sidebar.css";
 @import "styles/toc.css";
+@import "styles/prism.css";
 
 /* @import "styles/old.css"; */

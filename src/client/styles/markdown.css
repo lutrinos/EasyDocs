@@ -50,16 +50,6 @@ ul[role="tablist"] {
   border: none;
   font-size: 15px;
 }
-.code pre {
-  background-color: var(--gray-highest);
-  border-radius: 6px;
-  padding: 16px;
-  margin: 0;
-  overflow-x: auto;
-  font-family: monospace;
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
 
 .code button {
   position: absolute;
@@ -74,4 +64,64 @@ ul[role="tablist"] {
 }
 .code button:hover {
   background: var(--gray-higher);
+}
+
+/**
+* Blockquotes
+*/
+blockquote {
+  background: var(--gray-highest);
+  border-left: solid 2px var(--gray-dimmest);
+  color: var(--primary-color);
+  margin: 8px 0;
+  padding: 8px 12px;
+}
+
+blockquote>p {
+  margin: 0;
+}
+
+/**
+* Tables
+*/
+table {
+  margin: 32px 0;
+  width: 100%;
+  border-spacing: 1px;
+  background: #ddd;
+  border-radius: 4px;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+table th,
+table td {
+  background: white;
+  padding: 8px;
+}
+
+table tr:first-child th:first-child {
+  border-radius: 4px 0 0 0;
+}
+
+table tr:first-child th:last-child {
+  border-radius: 0 4px 0 0;
+}
+
+table tr:last-child td:first-child {
+  border-radius: 0 0 0 4px;
+}
+
+table tr:last-child td:last-child {
+  border-radius: 0 0 4px 0;
+}
+
+/**
+* Inline code
+*/
+*:not(pre) > code {
+  background: var(--gray-highest);
+  padding: 2px 4px;
+  border-radius: var(--radius);
+  margin: 0 4px;
 }

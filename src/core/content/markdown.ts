@@ -11,13 +11,6 @@ import { html } from './markdoc/html.markdoc';
 import { katexPlugin } from './plugins/katex';
 import { emojisPlugin } from './plugins/emojis';
 
-/*
-export function parseMarkdownFile(path: string) {
-    const content = readFileSync(path, 'utf-8');
-    return transform(content, path);
-}*/
-
-
 export class MarkdownTransformer {
     private pluginManager: PluginManager = new PluginManager();
 
@@ -46,6 +39,7 @@ export class MarkdownTransformer {
                 fence: fenceMarkdoc
             },
             variables: {
+                prismTheme: 'okaida',
                 ...front
             }
         });
