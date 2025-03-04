@@ -9,6 +9,7 @@ import { tabs, tab } from './markdoc/tabs.markdoc';
 import { PluginManager } from './plugins';
 import { html } from './markdoc/html.markdoc';
 import { katexPlugin } from './plugins/katex';
+import { emojisPlugin } from './plugins/emojis';
 
 /*
 export function parseMarkdownFile(path: string) {
@@ -21,6 +22,7 @@ export class MarkdownTransformer {
     private pluginManager: PluginManager = new PluginManager();
 
     constructor() {
+        this.pluginManager.register(emojisPlugin);
         this.pluginManager.register(katexPlugin);
     }
 

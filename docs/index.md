@@ -9,12 +9,13 @@ var i = 0;
 
 {% tabs %}
 
-{% tab label="React" %}
-React content goes here
+{% tab label="First" %}
+First window
 {% /tab %}
 
-{% tab label="HTML" %}
-HTML content goes here
+{% tab label="Second" %}
+#### Surprise, second tab !!
+And there are emojis :tada: :wink: :heart:
 {% /tab %}
 
 {% /tabs %}
@@ -42,7 +43,17 @@ Some *italic* and **bold** text as well as underline one
 {% /html %}
 
 
-A BIG $$ 1 + 1 = 2 $$ equation.
+A BIG multiline equation !!
+$$
+\begin{equation}
+\begin{split}
+(a - b)^2 &= (a - b)(a - b) \\
+&= a(a - b) - b(a - b)      \\
+&= a^2 -ab -ba + b^2        \\
+&= a^2 + 2ab + b^2          \nonumber
+\end{split}
+\end{equation}
+$$
 
 An inline $1+1=2$ equation, and a fake one $\frac{1}$.
 

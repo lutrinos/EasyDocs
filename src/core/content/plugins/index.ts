@@ -4,7 +4,7 @@ export interface Plugin {
     name: string;
     stage: 'pre' | 'post';
     priority: number;
-    transform: (content: string) => Promise<string>;
+    transform: (content: string) => Promise<string> | string;
 }
 
 export class PluginManager {
