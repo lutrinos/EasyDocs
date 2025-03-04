@@ -1,4 +1,4 @@
-import { nodes } from '@markdoc/markdoc';
+import { nodes, Tag } from '@markdoc/markdoc';
 
 function generateID(children: any[], attributes: { id: any; }) {
   if (attributes.id && typeof attributes.id === 'string') {
@@ -14,12 +14,11 @@ function generateID(children: any[], attributes: { id: any; }) {
 
 export default {
   ...nodes.heading,
-  transform(node: any, config: any) {
-    // @ts-ignore
-    const base = nodes.heading.transform(node, config);
-
-    // @ts-ignore
-    base.attributes.id = generateID(base.children, base.attributes);
+  transform(node: any, config: any) {// @ts-expect-error
+    const base = nodes.heading.transform(node, config);// @ts-expect-error
+    base.attributes.id = generateID(base.children, base.attributes);// @ts-expect-error
+    base.attributes.level = node.attributes.level;// @ts-expect-error
+    base.name = 'Heading';
     return base;
   }
 };

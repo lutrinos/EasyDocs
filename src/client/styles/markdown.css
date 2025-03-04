@@ -1,3 +1,14 @@
+/**
+* Headers
+*/
+h1[href], h2[href] {
+  cursor: pointer;
+}
+
+h1[href]:hover, h2[href]:hover {
+  text-decoration: underline;
+}
+
 /* Tabs styling */
 ul[role="tablist"] {
   list-style: none;

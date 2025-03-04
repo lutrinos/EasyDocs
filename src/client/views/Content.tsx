@@ -2,7 +2,7 @@ import { useEffect, useState } from "preact/hooks"
 
 import preact from "preact/compat";
 import { useLocation } from "wouter-preact";
-import markdoc, {Fence, Tab, Tabs } from "../components/Markdown";
+import markdoc, {Fence, Heading, Tab, Tabs } from "../components/Markdown";
 
 const Content = () => {
   const [url, _] = useLocation();
@@ -23,8 +23,10 @@ const Content = () => {
         components: {
           Tabs,
           Tab,
-          Fence
+          Fence,
+          Heading
         },
+        
       }) }</div>
     );
   }
