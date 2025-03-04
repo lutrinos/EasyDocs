@@ -1,6 +1,6 @@
 import copy from 'copy-to-clipboard';
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { ClipboardCheck, Copy } from 'lucide-preact';
+import { ClipboardCheck, Copy, File } from 'lucide-preact';
 
 
 export function Fence({ language, html }: any) {
@@ -18,6 +18,19 @@ export function Fence({ language, html }: any) {
 
     return (
         <div className="code" aria-live="polite">
+            <div className="code-bar">
+                <div>
+                    <File size={16} />
+                    <span>main.js</span>
+                </div>
+                <button onClick={() => setCopied(true)}>
+                    {
+                        copied
+                            ? <ClipboardCheck  size={16} />
+                            : <Copy size={16} />
+                    }
+                </button>
+            </div>
             <pre
                 className={`language-${language ?? ''}`}
                 ref={ref}
@@ -28,13 +41,6 @@ export function Fence({ language, html }: any) {
                         __html: html
                     }} />
             </pre>
-            <button onClick={() => setCopied(true)}>
-                {
-                    copied
-                        ? <ClipboardCheck />
-                        : <Copy />
-                }
-            </button>
         </div>
     );
 }

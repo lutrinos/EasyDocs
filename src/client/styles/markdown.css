@@ -1,15 +1,19 @@
 /**
 * Headers
 */
-h1[href], h2[href] {
+h1[href],
+h2[href] {
   cursor: pointer;
 }
 
-h1[href]:hover, h2[href]:hover {
+h1[href]:hover,
+h2[href]:hover {
   text-decoration: underline;
 }
 
-/* Tabs styling */
+/**
+* Tabs styling
+*/
 ul[role="tablist"] {
   list-style: none;
   padding: 0;
@@ -42,39 +46,50 @@ ul[role="tablist"] {
 }
 
 /* Add spacing between tab content and tab list */
-[role="tablist"] + * {
+[role="tablist"]+* {
   margin-top: 1rem;
 }
 
-/* Code */
+/**
+* Code blocks
+*/
 .code {
-  position: relative;
-}
-.code button {
-  appearance: none;
-  position: absolute;
-  color: inherit;
-  background: var(--code-background);
-  top: 17px;
-  right: 11px;
-  border-radius: 4px;
-  border: none;
-  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius);
+  border: solid 1px var(--gray-default);
+
+  pre {
+    border-radius: 0 0 var(--radius) var(--radius) !important;
+    margin-bottom: 0 !important;
+  }
 }
 
-.code button {
-  position: absolute;
-  display:flex;
+.code-bar {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  right: 8px;
-  top: 8px;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 6px;
-}
-.code button:hover {
-  background: var(--gray-higher);
+  padding: 6px 6px 0 6px;  
+
+  div {
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    color: var(--gray-dimmest);
+  }
+
+  button {
+    cursor: pointer;
+    appearance: none;
+    background: none;
+    border: none;
+    color: var(--gray-dimmest)
+  }
+  button:hover {
+    color: var(--gray-dimmer);
+  }
 }
 
 /**
@@ -130,7 +145,7 @@ table tr:last-child td:last-child {
 /**
 * Inline code
 */
-*:not(pre) > code {
+*:not(pre)>code {
   background: var(--gray-highest);
   padding: 2px 4px;
   border-radius: var(--radius);
