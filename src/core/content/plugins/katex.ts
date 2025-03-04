@@ -8,7 +8,8 @@ export const katexPlugin = {
         const res = content.replace(/(\${1,2})((?:.|\n)*?)\1/g, (_, sep, tex) => {
             return '{% html tag="span" %}' + katex.renderToString(tex, {
                 displayMode: sep.length === 2,
-                //output: 'html'
+                output: 'htmlAndMathml',
+                throwOnError: false,
             }) + "{% /html %}";
         });
 

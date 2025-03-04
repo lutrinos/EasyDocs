@@ -44,5 +44,5 @@ Some *italic* and **bold** text as well as underline one
 
 A BIG $$ 1 + 1 = 2 $$ equation.
 
-An inline $1+1=2$ equation.
+An inline $1+1=2$ equation, and a fake one $\frac{1}$.
 
