@@ -1,15 +1,10 @@
-/*
-import Markdoc from '@markdoc/markdoc';
+
 
 export interface Plugin {
     name: string;
-    transform: (content: ParsedContent) => Promise<ParsedContent>;
-    // Optional Markdoc config
-    config?: {
-        nodes?: Record<string, Markdoc.Config>;
-        tags?: Record<string, Markdoc.Config>;
-        variables?: Record<string, any>;
-    };
+    stage: 'pre' | 'post';
+    priority: number;
+    transform: (content: string) => Promise<string>;
 }
 
 export class PluginManager {
@@ -17,9 +12,12 @@ export class PluginManager {
 
     register(plugin: Plugin) {
         this.plugins.push(plugin);
+        this.plugins.sort((a, b) => {
+            return a.priority - b.priority;
+        });
     }
 
-    async process(content: ParsedContent): Promise<ParsedContent> {
+    async process(content: string): Promise<string> {
         let result = content;
         
         for (const plugin of this.plugins) {
@@ -28,29 +26,4 @@ export class PluginManager {
         
         return result;
     }
-
-    getConfig(): Markdoc.Config {
-        const config: Markdoc.Config = {
-            nodes: {},
-            tags: {},
-            variables: {}
-        };
-
-        // Merge all plugin configs
-        for (const plugin of this.plugins) {
-            if (plugin.config) {
-                if (plugin.config.nodes) {
-                    config.nodes = { ...config.nodes, ...plugin.config.nodes };
-                }
-                if (plugin.config.tags) {
-                    config.tags = { ...config.tags, ...plugin.config.tags };
-                }
-                if (plugin.config.variables) {
-                    config.variables = { ...config.variables, ...plugin.config.variables };
-                }
-            }
-        }
-
-        return config;
-    }
-} */
+}

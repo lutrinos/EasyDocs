@@ -7,6 +7,12 @@ import Footer from "./views/Footer";
 
 function App() {
   const [value, setValue] = useState(10);
+
+  useEffect(() => {
+    if (window.document) {
+      document.querySelector(".seo")?.remove();
+    }
+  }, []);
   
   return (
     <Router>

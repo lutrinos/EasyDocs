@@ -2,7 +2,7 @@ import { FileStore } from '../fs/store';
 import { join, parse } from 'path';
 import { crawl } from '../fs';
 import { CONFIG_FILE_EXTENSIONS, MARKDOWN_EXTENSIONS } from '../constants';
-import { parseMarkdownFile } from './markdown';
+import { MarkdownTransformer } from './markdown';
 import { Group } from 'fdir';
 import { enforceSchema, GroupConfig, groupSchema } from '@/core/schemas';
 import { readFileSync } from 'fs';
@@ -18,6 +18,7 @@ export * from "./strings";
 export class ContentManager {
   private path: string;
   private store: FileStore;
+  private transformer: MarkdownTransformer = new MarkdownTransformer();
   private tree = new Tree();
   private prefix: string;
   private watcher: chokidar.FSWatcher | null = null;
@@ -61,7 +62,7 @@ export class ContentManager {
   }
 
   private async processFile(path: string, groupUrl: string) {
-    const output = parseMarkdownFile(path);
+    const output = await this.transformer.transform(path);
 
     // Remove extension and build URL path
     const fileName = parse(path).name;

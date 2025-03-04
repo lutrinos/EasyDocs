@@ -6,65 +6,55 @@ import yaml from 'yaml';
 import headingMarkdoc from './markdoc/heading.markdoc';
 import fenceMarkdoc from './markdoc/fence.markdoc';
 import { tabs, tab } from './markdoc/tabs.markdoc';
+import { PluginManager } from './plugins';
+import { html } from './markdoc/html.markdoc';
+import { katexPlugin } from './plugins/katex';
 
+/*
 export function parseMarkdownFile(path: string) {
     const content = readFileSync(path, 'utf-8');
     return transform(content, path);
-}
+}*/
 
 
-export const transform = (content: string, path: string) => {
-    const ast = Markdoc.parse(content);
-    const front = ast.attributes.frontmatter ? yaml.parse(ast.attributes.frontmatter) : {};
-    const transformed = Markdoc.transform(ast, {
-        tags: {
-            tabs,
-            tab
-        },
-        nodes: {
-            heading: headingMarkdoc,
-            fence: fenceMarkdoc
-        },
-        variables: {
-            ...front
-        }
-    });
-
-    const meta = enforceSchema(docSchema, front, `Failed to read front config of "${path}"`).data;
-
-    return {
-        html: Markdoc.renderers.html(transformed),
-        transformed,
-        meta
-    }
-};
-/*
-export class ContentTransformer {
-    //private pluginManager: PluginManager;
+export class MarkdownTransformer {
+    private pluginManager: PluginManager = new PluginManager();
 
     constructor() {
-        //this.pluginManager = new PluginManager();
-        //this.setupPlugins([]);
-    }
-
-    private setupPlugins(plugins) {
-        for (const pluginName of plugins) {
-            try {
-                const plugin = require(`./plugins/${pluginName}`).default;
-                this.pluginManager.register(plugin);
-            } catch (error) {
-                console.warn(`Failed to load plugin: ${pluginName}`, error);
-            }
-        }
+        this.pluginManager.register(katexPlugin);
     }
 
     async transform(path: string): Promise<any> {
-        const parsed = await parseMarkdownFile(filePath);
+        let content = readFileSync(path).toString();
 
         // Process with plugins first
-        const processedContent = await this.pluginManager.process(parsed);
+        content = await this.pluginManager.process(content);
 
+        // Parse
+        const ast = Markdoc.parse(content);
+        const front = ast.attributes.frontmatter ? yaml.parse(ast.attributes.frontmatter) : {};
+        const transformed = Markdoc.transform(ast, {
+            tags: {
+                tabs,
+                tab,
+                html
+            },
+            nodes: {
+                heading: headingMarkdoc,
+                fence: fenceMarkdoc
+            },
+            variables: {
+                ...front
+            }
+        });
 
+        const meta = enforceSchema(docSchema, front, `Failed to read front config of "${path}"`).data;
+
+        return {
+            html: Markdoc.renderers.html(transformed),
+            transformed,
+            meta
+        }
     }
 
-}*/
+}

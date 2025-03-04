@@ -1,3 +1,4 @@
+import { ChevronRight } from "lucide-preact";
 import { Link } from "wouter-preact";
 
 const SideLink = ({ title, href, type = 0, opened, onOpen }) => {
@@ -5,7 +6,9 @@ const SideLink = ({ title, href, type = 0, opened, onOpen }) => {
     <Link class="sidelink" href={href}>
       {title}
       {type === 1 && (
-        <span class={`material-symbols-rounded${opened ? ' open' : ''}`} onClick={onOpen}>chevron_right</span>
+        <span class={opened ? ' open' : ''} onClick={onOpen}>
+          <ChevronRight />
+        </span>
       )}
     </Link>
   );
