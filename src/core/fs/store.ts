@@ -14,7 +14,6 @@ export class FileStore {
     }
 
     write(path: string, html: string, json: string) {
-
         // Create the directory
         mkdirSync(this.getDir(path, 'data'), { recursive: true });
         mkdirSync(this.getDir(path, 'html'), { recursive: true });

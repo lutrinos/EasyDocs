@@ -1,5 +1,30 @@
 
 :root {
+  /* Colors */
+  --c-primary: #1e87f0;
+  --c-highlight: #1e87f0;
+  --c-brand: #5468ff;
+
+  --c-text: #666;
+  --c-active: #444950;
+  --c-muted: #999;
+
+  /* Background */
+  --b-primary: #fff;
+  --b-modal: #f5f6f7;
+  --b-container: rgba(101, 108, 133, 0.8);
+
+  /* Breakpoints */
+  --bp-s: 640px;
+  --bp-m: 960px;
+  --bp-l: 1200px;
+  --bp-xl: 1600px;
+
+
+
+  /**
+  * Old system
+  */
   --bg: white;
   --bg-hover: #f8fafc;
   --bg-active: #eff6ff;
@@ -52,11 +77,13 @@
   --layout-sidebar-max: 300px;
 
   /* Colors */
-  --primary-dimmest: #3479E9;
-  --primary-dimmer: #61A6FA;
-  --primary-default: #91C3FD;
-  --primary-higher: #BEDBFE;
-  --primary-highest: #DCEBFE;
+  --primary-dimmest: #2A6BBE;  /* Darker shade for better contrast */
+  --primary-dimmer: #4DA1E0;   /* Slightly deeper blue */
+  --primary-default: #7BC4F9;  /* More vibrant blue */
+  --primary-higher: #A4D8F0;   /* Softer, more appealing shade */
+  --primary-highest: #E0F2FF;  /* Lightest shade for highlights */
+
+  --test: #1f7aff;
 
   /* Grays */
   --gray-dimmest: #71717A;

@@ -1,0 +1,70 @@
+/**
+* Tabs styling
+*/
+.tab {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -20px;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  border-bottom: solid 1px var(--c-muted);
+  li {
+    flex: none;
+    padding-left: 20px;
+    position: relative;
+  }
+  
+  a {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    column-gap: 0.25em;
+    justify-content: center;
+    padding: 9px 20px;
+    color: var(--color-secondary);
+    border-bottom: solid 2px transparent;
+    font-size: 14px;
+    line-height: 20px;
+    transition: color 0.1s ease-in-out;
+  }
+  
+  a:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  
+  .active a {
+    color: var(--c-active);
+    border-color: var(--c-primary);
+  }
+}
+
+/*
+border: solid 1px var(--gray-default);
+border-radius: var(--radius);
+margin: 8px 0;
+
+ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0 4px;
+  gap: 4px;
+  overflow: auto;
+  border-bottom: solid 1px var(--gray-higher);
+  font-size: var(--size);
+  
+  button {
+    padding: 4px 6px;
+    border: none;
+    border-bottom: solid 2px transparent;
+    background: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    border-bottom: solid 2px var(--primary-default);
+  }
+}
+*/

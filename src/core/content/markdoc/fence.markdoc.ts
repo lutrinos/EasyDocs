@@ -11,7 +11,7 @@ export default {
       type: String
     }
   },
-  transform(node: Node, config: Config) {
+  async transform(node: Node, config: Config) {
     const code = node.transformChildren(config).join('');
 
     if (node.attributes.language) {

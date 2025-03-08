@@ -19,7 +19,7 @@ const Content = () => {
 
   if (json) {
     return (
-      <div style={{ flex: 1, padding: 20 }} class="content">{ markdoc(json, preact, {
+      <div class="md">{ markdoc(json, preact, {
         components: {
           Tabs,
           Tab,

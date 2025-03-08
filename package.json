@@ -1,11 +1,10 @@
 {
   "scripts": {
-    "old-dev": "tsc && tsc-alias && node ./node-dist/index.js",
-    "dev": "ts-node src/index.ts"
+    "dev": "ts-node src/index.ts",
+    "tree": "npm ls --all"
   },
   "devDependencies": {
     "@types/node": "^20.16.1",
-    "tsc-alias": "^1.8.10",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.5.4"
   },

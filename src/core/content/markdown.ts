@@ -11,6 +11,7 @@ import { html } from './markdoc/html.markdoc';
 import { katexPlugin } from './plugins/katex';
 import { emojisPlugin } from './plugins/emojis';
 
+// TODO: Switch from markdoc to markdown-it
 export class MarkdownTransformer {
     private pluginManager: PluginManager = new PluginManager();
 
@@ -27,8 +28,17 @@ export class MarkdownTransformer {
 
         // Parse
         const ast = Markdoc.parse(content);
+
+        /*for (const node of  ast.walk()) {
+            console.log(node.type);
+
+            if (node.type === 'text') {
+                console.log(node);
+            }
+        }*/
+
         const front = ast.attributes.frontmatter ? yaml.parse(ast.attributes.frontmatter) : {};
-        const transformed = Markdoc.transform(ast, {
+        const transformed = await Markdoc.transform(ast, {
             tags: {
                 tabs,
                 tab,

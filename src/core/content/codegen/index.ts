@@ -7,12 +7,21 @@ import { log } from '../../logger';
 
 const targets = lightningcss.browserslistToTargets(browserslist('>= 0.25%'));
 
+const handleError = (fn: any, msg: string) => {
+  try {
+    return fn();
+  } catch (err: any) {
+    log('error', err.toString());
+  }
+  throw Error(msg);
+}
+
 export const buildCSS = async (dirname: string) => {
-  let { code } = await lightningcss.bundleAsync({
+
+  let { code } = await handleError(() => lightningcss.bundleAsync({
     targets,
 
     filename: join(dirname, 'client', 'App.css'),
-    minify: true,
 
     resolver: {
       resolve(specifier: string, from: string) {
@@ -22,14 +31,32 @@ export const buildCSS = async (dirname: string) => {
           return custom;
         }
 
+        
         return join(dirname, 'client', specifier);
         // return path.resolve(path.dirname(from), specifier);
       }
     }
-  });
+  }), 'Failed to build css with lightningcss');
+
+  /*const compiler = await handleError(() => compile('@import "tailwindcss";\n' + _code.toString(), {
+    base: join(dirname, 'client'),
+    onDependency: (p: string) => {}
+  }), 'Failed to compile css with tailwindcss');
+
+  console.log(compiler);
+  
+  const result = handleError(() => compiler.build([]), 'Failed to build css with tailwind css');
+
+  //console.log(result.toString());
+
+  const code = handleError(() => lightningcss.transform({
+    code: Buffer.from(result),
+    filename: '',
+    targets,
+    minify: true
+  }).code.toString(), 'Failed to minify css with lightningcss');*/
 
   writeFileSync(join(process.cwd(), '.easydocs', '_', 'index.css'), code);
-
 
   log('success', 'Built css');
 }
