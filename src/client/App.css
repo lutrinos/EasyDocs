@@ -1,5 +1,20 @@
+@import "tailwindcss" source(none);
+@source "./";
+
+@plugin "@tailwindcss/typography";
+@plugin "daisyui";
 
 
+
+@import "./styles/normalize.css";
+@import "./styles/prism.css";
+
+.prose a {
+    @apply hover:text-primary;
+}
+
+/*
+@import "./styles/markdown.css";
 @import "styles/normalize.css";
 @import "styles/variables.css";
 @import "styles/site.css";
@@ -10,6 +25,6 @@
 @import "styles/content.css";
 @import "styles/sidebar.css";
 @import "styles/toc.css";
-@import "styles/prism.css";
+@import "styles/prism.css";*/
 
 /* @import "styles/old.css"; */

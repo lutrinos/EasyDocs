@@ -10,14 +10,20 @@
   },
   "dependencies": {
     "@elysiajs/node": "^1.2.5",
+    "@elysiajs/static": "^1.2.0",
     "@markdoc/markdoc": "^0.5.1",
     "@preact/compat": "^17.1.2",
+    "@tailwindcss/cli": "^4.1.4",
+    "@tailwindcss/postcss": "^4.1.4",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/katex": "^0.16.7",
     "@types/mime-types": "^2.1.4",
     "@types/prismjs": "^1.26.5",
+    "@types/tailwindcss": "^3.0.11",
     "browserslist": "^4.23.3",
     "chokidar": "^3.6.0",
     "copy-to-clipboard": "^3.3.3",
+    "daisyui": "^5.0.28",
     "elysia": "^1.2.14",
     "esbuild": "^0.20.2",
     "fdir": "^6.4.3",
@@ -26,11 +32,14 @@
     "lucide-preact": "^0.477.0",
     "mime-types": "^2.1.35",
     "picocolors": "^1.0.1",
+    "postcss": "^8.5.3",
     "preact": "^10.23.2",
     "preact-render-to-string": "^6.5.9",
     "prismjs": "^1.29.0",
+    "tailwindcss": "^4.1.4",
     "wouter-preact": "^3.3.3",
     "yaml": "^2.5.0",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zustand": "^5.0.3"
   }
 }

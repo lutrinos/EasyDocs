@@ -46,7 +46,8 @@ export class MarkdownTransformer {
             },
             nodes: {
                 heading: headingMarkdoc,
-                fence: fenceMarkdoc
+                fence: fenceMarkdoc,
+                //table: tableMarkdoc
             },
             variables: {
                 prismTheme: 'okaida',

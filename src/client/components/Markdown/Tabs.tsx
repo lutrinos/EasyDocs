@@ -7,30 +7,27 @@ export function Tabs({ labels, children }: any) {
   const [
     currentTab,
     setCurrentTab
-  ] = useState(0);
+  ] = useState(labels[0]);
 
   return (
     <TabContext.Provider value={currentTab}>
-      <div className="tab-group">
-        <ul className="tab" role="tablist">
-          {labels.map((label: string, index: number) => (
-            <li
+      <div className="tabs tabs-border" role="tablist">
+        {labels.map((label: string, index: number) => (
+            <div
               key={index}
-              role="presentation"
-              className={index === currentTab ? 'active' : ''}>
-              <a
                 role="tab"
-                tabIndex={-1}
-                aria-selected={index === currentTab}
-                onClick={() => setCurrentTab(index)}
+                //tabIndex={-1}
+                className={label === currentTab ? 'tab tab-active' : 'tab'}
+                aria-selected={label === currentTab}
+                onClick={() => setCurrentTab(label)}
               >
                 {label}
-              </a>
-            </li>
+              </div>
           ))}
-        </ul>
-        {children}
-      </div>
+        </div>
+        <div className="border-base-300 bg-base-100 p-10">
+        { children }
+        </div>
     </TabContext.Provider>
   );
 };

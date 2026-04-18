@@ -10,3 +10,6 @@
 - Add searching with https://github.com/nextapps-de/flexsearch
 - Auto-update with https://github.com/gtrabanco/elysia-hmr-html
 - Create blog and authors pages for blog
+
+# UI inspiration
+- https://just-the-docs.com/docs/index-test/

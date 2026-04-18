@@ -10,11 +10,14 @@ export type BannerOption = {
   icon?: string;
 };
 
-export const Banner = ({ id, title, background, color, icon, url, visibility }: BannerOption) => {
+export const Banner = () => {
   return (
-    <div class="banner" style={{ background: background ?? 'var(--primary-dimmest)', color: color ?? 'var(--background)' }}>
-      <div>
-        <p>{ title }</p>
+    <div class="navbar bg-primary text-primary-content px-4" >
+      <div class="navbar-start text-xl bold">
+        Annonce
+      </div>
+      <div class="navbar-end">
+        <a class="link link-hover">En savoir plus</a>
       </div>
     </div>
   );

@@ -1,11 +1,13 @@
-import { Tag } from '@markdoc/markdoc';
+import { Node, Tag } from '@markdoc/markdoc';
 
 export const tabs = {
   render: 'Tabs',
   attributes: {},
-  transform(node: any, config: any) {
-    const labels = node
-      .transformChildren(config)
+  async transform(node: Node, config: any) {
+    const children = await node
+      .transformChildren(config);
+    
+    const labels = children
       .filter((child: any) => child && child.name === 'Tab')
       .map((tab: any) => (typeof tab === 'object' ? tab.attributes.label : null));
 

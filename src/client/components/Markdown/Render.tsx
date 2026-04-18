@@ -88,9 +88,11 @@ export default function markdoc(
 
         if (className) attrs.className = className;
 
+        if (!children.map) {
+            return null;
+        }
 
         return React.createElement(
-            // @ts-ignore
             resolveTagName(name, components),
             Object.keys(attrs).length == 0 ? null : deepRender(attrs),
             ...children.map(render)

@@ -7,9 +7,10 @@ import { loadConfig } from '@core/config';
 import mime from 'mime-types';
 import Elysia, { ElysiaFile, file } from "elysia";
 import node from "@elysiajs/node";
+import staticPlugin from "@elysiajs/static";
 import path, { join } from 'path';
 import { ContentManager } from './core/content';
-import { existsSync, mkdirSync, statSync } from 'fs';
+import { cpSync, existsSync, mkdirSync, statSync } from 'fs';
 import pc from 'picocolors';
 
 interface ServerContext {
@@ -27,10 +28,16 @@ const build = async (dirname: string) => {
   try {
     mkdirSync(path.join(process.cwd(), '.easydocs'), { recursive: true });
 
+    if (existsSync(join(process.cwd(), 'public'))) {
+      cpSync(join(process.cwd(), 'public'), join(process.cwd(), '.easydocs'), {
+        recursive: true
+      });
+    }
+
     const config = loadConfig(dirname);
 
     await buildCSS(__dirname);
-    await buildJs(__dirname);
+    await buildJs(__dirname, true);
 
     const manager = new ContentManager(process.cwd(), '.easydocs');
     await manager.processDirectory();
@@ -54,10 +61,19 @@ const checkStatic = (url: string): string | false => {
 
 new Elysia({ adapter: node() })
   .get('/build', async () => {
-    await buildCSS(__dirname);
-    await buildJs(__dirname);
+    /*await buildCSS(__dirname);
+    await buildJs(__dirname, false);*/
+    await build(__dirname);
     return 'Ok';
   })
+  .use(
+    staticPlugin({
+      prefix: '/',
+      assets: "../.easydocs",
+      indexHTML: true,
+      noCache: true // temporary because of https://github.com/elysiajs/elysia/issues/739
+    })
+  )
   .get("/*", ({ params, set }: { params: { '*': string } } & ServerContext) => {
     const filePath = params['*'];
 

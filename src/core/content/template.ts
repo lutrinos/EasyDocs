@@ -16,7 +16,7 @@ export const HTML_TEMPLATE = `
 </head>
 
 <body>
-	<div id="app"><div class="seo">{{ html }}</div></div>
+	<div id="app">{{ html }}</div>
 </body>
 <script>window.__EASYDOCS__ = {hello: true};</script>
 <script src="/_/index.js"></script>

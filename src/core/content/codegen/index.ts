@@ -4,6 +4,7 @@ import browserslist from 'browserslist';
 import { join } from 'path';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { log } from '../../logger';
+import { exec, execSync } from 'child_process';
 
 const targets = lightningcss.browserslistToTargets(browserslist('>= 0.25%'));
 
@@ -17,13 +18,16 @@ const handleError = (fn: any, msg: string) => {
 }
 
 export const buildCSS = async (dirname: string) => {
-
+/*
   let { code } = await handleError(() => lightningcss.bundleAsync({
     targets,
 
     filename: join(dirname, 'client', 'App.css'),
 
     resolver: {
+      async read(path: string) {
+        return readFileSync(path, { encoding: 'utf-8' });
+      },
       resolve(specifier: string, from: string) {
         const custom = join(process.cwd(), 'overwrites', specifier);
 
@@ -37,6 +41,17 @@ export const buildCSS = async (dirname: string) => {
       }
     }
   }), 'Failed to build css with lightningcss');
+  
+  writeFileSync(join(process.cwd(), '.easydocs', '_', 'index.css'), code);
+  */
+
+  execSync(`npx @tailwindcss/cli -i ${join(dirname, 'client', 'App.css')} -o  ${join(process.cwd(), '.easydocs', '_', 'index.css')} --minify`, {
+    stdio: [
+      null,
+      null,
+      process.stderr
+    ]
+  });
 
   /*const compiler = await handleError(() => compile('@import "tailwindcss";\n' + _code.toString(), {
     base: join(dirname, 'client'),
@@ -56,23 +71,26 @@ export const buildCSS = async (dirname: string) => {
     minify: true
   }).code.toString(), 'Failed to minify css with lightningcss');*/
 
-  writeFileSync(join(process.cwd(), '.easydocs', '_', 'index.css'), code);
 
   log('success', 'Built css');
 }
 
 
-export const buildJs = async (dirname: string) => {
+export const buildJs = async (dirname: string, build: boolean) => {
 
   await esbuild.build({
     entryPoints: [join(dirname, 'client', 'App.tsx')],
     outfile: join(process.cwd(), '.easydocs', '_', 'index.js'),
-    minify: true,
+    minify: build,
     bundle: true,
     platform: 'browser',
     treeShaking: true,
     jsxImportSource: 'preact',
-    jsx: 'automatic'
+    jsx: 'automatic',
+    alias: {
+      'react': 'preact/compat',
+      'react-dom': 'preact/compat'
+    }
   });
 
 

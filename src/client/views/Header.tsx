@@ -3,40 +3,33 @@ import { Brand } from "../components/Header/Brand";
 import { Links } from "../components/Header/Links";
 import { Banner } from "../components/Header/Banner";
 import { Search } from "../components/Header/Search";
-import { ExternalLinks } from "../components/Header/ExternalLinks";
 
-const Header = ({ title, icon, links, banners }: { title: string, icon: string, links: EasyDocsLink[], banners: EasyDocsBanner[] }) => {
+const Header = () => {
   return (
-    <>
-      {
-        <div class="banners">
-          <Banner title="Some example banner !!" />
-        </div>
-      }
+    <header class="sticky top-0 flex flex-col w-full z-10">
+      <Banner />
 
-      <header>
-        <div class="inner">
-          <div class="navbar">
-            <Brand title={title} icon={icon} />
-            {links && <Links links={links} />}
-          </div>
-
-          <div class="infos">
-          <div>
-              <button
-                onClick={() =>
-                  fetch("/build").then(() => window.location.reload())
-                }
-              >
-                Build
-              </button>
-            </div>
-            <Search />
-            <ExternalLinks />
-          </div>
+      <div className="navbar bg-base-100 border-b border-b-base-500">
+        <div class="navbar-start">
+          <Brand />
         </div>
-      </header>
-    </>
+
+        <div className="navbar-end flex flex-row gap-4">
+
+          <Links />
+          <Search />
+
+          <button
+            className="btn btn-primary"
+            onClick={() =>
+              fetch("/build").then(() => window.location.reload())
+            }
+          >
+            Build
+          </button>
+        </div>
+      </div>
+    </header>
   );
 };
 

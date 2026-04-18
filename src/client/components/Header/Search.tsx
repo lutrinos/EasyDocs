@@ -1,10 +1,12 @@
+import { Search as SearchIcon } from 'lucide-preact'
+
 export const Search = () => {
   return (
     <div class="search">
-      <div class="input">
-        <span class="material-symbols-rounded">search</span>
-        <input placeholder="Search" />
-      </div>
+      <label class="input flex gap-md">
+        <SearchIcon className="h-[1em]" />
+        <input type="text" class="grow" placeholder="Search" />
+      </label>
     </div>
   );
 };

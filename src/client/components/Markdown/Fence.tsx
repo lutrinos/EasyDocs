@@ -16,7 +16,7 @@ export function Fence({ language, html }: any) {
         }
     }, [copied]);
 
-    return (
+    /*return (
         <div className="code" aria-live="polite">
             <div className="code-bar">
                 <div>
@@ -32,15 +32,25 @@ export function Fence({ language, html }: any) {
                 </button>
             </div>
             <pre
-                className={`language-${language ?? ''}`}
+                //className={`language-${language ?? ''}`}
                 ref={ref}
             >
                 <code
-                    className={`language-${language ?? ''}`}
+                    class={`language-${language ?? ''}`}
                     dangerouslySetInnerHTML={{
                         __html: html
                     }} />
             </pre>
         </div>
+    );*/
+
+    return (
+        <pre ref={ref}>
+            <code
+                class={`language-${language ?? ''}`}
+                dangerouslySetInnerHTML={{
+                    __html: html
+                }} />
+        </pre>
     );
 }
