@@ -9,7 +9,7 @@
 
 ## Install
 ```bash
-npm install @lutrinos/easydocs --global
+npm install @nathanti/easydocs --global
 ```
 
 ## Create a project
