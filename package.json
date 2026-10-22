@@ -2,7 +2,7 @@
   "name": "@nathanti/easydocs",
   "version": "1.0.5",
   "license": "MIT",
-  "author": "Nathan TILLIER",
+  "author": "Nathan T.",
   "main": "./dist/index.js",
   "bin": {
     "easydocs": "./dist/index.js"
