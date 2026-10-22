@@ -5,7 +5,7 @@
 > [!NOTE]  
 > I am redoing EasyDocs from scratch with lots of new features. I have many important tasks to finish, but I hope it will be done in around 3-4 months.
 
-[Demo](https://easydocs.onrender.com/) - [Website](https://easydocs.onrender.com/)
+[Demo](https://lutrinos.github.io/) - [Website](https://easydocs.onrender.com/)
 
 ## Install
 ```bash
